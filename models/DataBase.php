@@ -46,17 +46,9 @@ class DataBase
         mysqli_query($this->con, $sqlQuery);
     }
 
-    /*function insertStudent($id, $name, $credit, $cgpa, $dept_id)
-    {
-        $sqlQuery = "INSERT INTO student (id, name, credit, cgpa, dept_id)
-                    VALUES ('$id', '$name', '$credit', '$cgpa', '$dept_id')";
-
-        mysqli_query($this->con, $sqlQuery);
-    }*/
-
     function editStudent($id, $name, $dob, $credit, $cgpa, $dept_id)
     {
-        $sqlQuery = "UPDATE products 
+        $sqlQuery = "UPDATE student 
                     SET id = '$id', name = '$name', dob = '$dob', credit = '$credit', cgpa = '$cgpa', dept_id = '$dept_id'
                     WHERE id = '$id'";
 
@@ -83,6 +75,20 @@ class DataBase
             return 1;
         } else {
             //return  "not found";
+        }
+    }
+
+    function departmentList(){
+        $sqlQuery = "SELECT * FROM department";
+
+        $result = mysqli_query($this->con, $sqlQuery);
+        $row = mysqli_num_rows($result);
+
+        if($row > 0){
+            while ($rowArray = mysqli_fetch_assoc($result)){
+                $data[] = $rowArray;
+            }
+            return $data;
         }
     }
 }

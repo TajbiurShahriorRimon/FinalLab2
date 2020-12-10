@@ -71,4 +71,22 @@ if(isset($_POST['addStudent'])){
     $sig = $db->insertStudent($studentId, $name, $dob, $credit, $cgpa, $deptId);
 }
 
+if(isset($_POST['editStudent'])){
+    //$studentId = htmlspecialchars($_POST['studentId']);
+    $name = htmlspecialchars($_POST['sname']);
+    $day = htmlspecialchars($_POST['day']);
+    $month = htmlspecialchars($_POST['month']);
+    $year = htmlspecialchars($_POST['year']);
+    $credit = htmlspecialchars($_POST['credit']);
+    $cgpa = htmlspecialchars($_POST['cgpa']);
+    $deptId = htmlspecialchars($_POST['deptId']);
+
+    $dob = $year.'-'.$month.'-'.$day;
+    $studentId = $_GET['id'];
+
+    $db = new DataBase();
+    $db->dbCon();
+    $sig = $db->editStudent($studentId, $name, $dob, $credit, $cgpa, $deptId);
+}
+
 ?>

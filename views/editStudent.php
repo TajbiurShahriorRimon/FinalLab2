@@ -1,9 +1,16 @@
 <?php
 
+include '../controllers/userController.php';
 ?>
 
 <html>
 <head>
+    <style>
+        span{
+            color: darkred;
+            font-weight: bold;
+        }
+    </style>
 
 </head>
 <body>
@@ -20,9 +27,6 @@
                 <script>
 
                 </script>
-                <?php
-                //echo $err_name;
-                ?>
             </td>
         </tr>
         <tr>
@@ -80,15 +84,24 @@
         <tr>
             <td align="right">
                 Dept ID:</td>
-            <td><input type="text" id="deptId" name="deptId"><span id="err_deptId"></span>
-                <?php
-                //echo $err_email;
-                ?>
+            <td>
+                <select name="deptId" id="deptId">
+                    <option disabled selected>Choose</option>
+                    <?php
+                    include_once '../models/DataBase.php';
+                    $array = new DataBase();
+                    $array->dbCon();
+                    $result = $array->departmentList();
+                    foreach ($result as $data){
+                        echo "<option value='.".$data['id'].".'>".$data['id']."</option>";
+                    }
+                    ?>
+                </select> <span id="err_deptId"></span>
             </td>
         </tr>
         <tr align="center">
             <td colspan="2">
-                <input name="edit" type="submit" value="EDIT">
+                <input name="editStudent" type="submit" value="EDIT">
             </td>
         </tr>
     </table>
@@ -96,3 +109,4 @@
 <script src="js/editValidate.js"></script>
 </body>
 </html>
+

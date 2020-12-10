@@ -4,7 +4,12 @@ include '../controllers/userController.php';
 
 <html>
 <head>
-
+    <style>
+        span{
+            color: darkred;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <form name="AddStudent" action="" method="post" onsubmit="return editStudent()">
@@ -17,12 +22,7 @@ include '../controllers/userController.php';
         <tr>
             <td align="right">Name:</td>
             <td><input type="text" id="sname" name="sname"> <span id="err_sname"></span>
-                <script>
 
-                </script>
-                <?php
-                //echo $err_name;
-                ?>
             </td>
         </tr>
         <tr>
@@ -80,10 +80,19 @@ include '../controllers/userController.php';
         <tr>
             <td align="right">
                 Dept ID:</td>
-            <td><input type="text" id="deptId" name="deptId"><span id="err_deptId"></span>
-                <?php
-                //echo $err_email;
-                ?>
+            <td>
+                <select name="deptId" id="deptId">
+                    <option disabled selected>Choose</option>
+                    <?php
+                    include_once '../models/DataBase.php';
+                    $array = new DataBase();
+                    $array->dbCon();
+                    $result = $array->departmentList();
+                    foreach ($result as $data){
+                        echo "<option value='.".$data['id'].".'>".$data['id']."</option>";
+                    }
+                    ?>
+                </select> <span id="err_deptId"></span>
             </td>
         </tr>
         <tr align="center">

@@ -13,7 +13,7 @@ echo 'welcome';
             <a href="AllStudent.php">All Students</a>
         </td>
         <td>
-            <a href="AddStudent.php">All Students</a>
+            <a href="AddStudent.php">Add Students</a>
         </td>
         <td>
             <a href="">All Departments</a>

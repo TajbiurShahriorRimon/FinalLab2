@@ -4,6 +4,12 @@ include '../controllers/userController.php';
 <!doctype>
 <html>
 <head>
+    <style>
+        span{
+            color: darkred;
+            font-weight: bold;
+        }
+    </style>
 
     <script src="js/loginValidate.js"></script>
 </head>
