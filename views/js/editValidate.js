@@ -47,9 +47,9 @@ function editStudent(){
         return !hasErr;
     }
     else{
-        if(e_sname.search("0") != -1 || e_sname.search("1") != -1 || e_sname.search("2") != -1 || e_sname.search("3") != -1 ||
-            e_sname.search("4") != -1 || e_sname.search("5") != -1 || e_sname.search("6") != -1 || e_sname.search("7") != -1 ||
-            e_sname.search("8") != -1 || e_sname.search("9") != -1){
+        if(e_sname.search("0") != -1 && e_sname.search("1") != -1 && e_sname.search("2") != -1 && e_sname.search("3") != -1 &&
+            e_sname.search("4") != -1 && e_sname.search("5") != -1 && e_sname.search("6") != -1 && e_sname.search("7") != -1 &&
+            e_sname.search("8") != -1 && e_sname.search("9") != -1){
             hasErr= true;
             err_sname.innerHTML = "Name Cannot Contain any Number!!";
             e_sname.focus();
