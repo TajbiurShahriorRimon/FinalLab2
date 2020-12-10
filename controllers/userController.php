@@ -54,5 +54,21 @@ if(isset($_POST['login'])) {
         }
     }*/
 }
+if(isset($_POST['addStudent'])){
+    $studentId = htmlspecialchars($_POST['studentId']);
+    $name = htmlspecialchars($_POST['sname']);
+    $day = htmlspecialchars($_POST['day']);
+    $month = htmlspecialchars($_POST['month']);
+    $year = htmlspecialchars($_POST['year']);
+    $credit = htmlspecialchars($_POST['credit']);
+    $cgpa = htmlspecialchars($_POST['cgpa']);
+    $deptId = htmlspecialchars($_POST['deptId']);
+
+    $dob = $year.'-'.$month.'-'.$day;
+
+    $db = new DataBase();
+    $db->dbCon();
+    $sig = $db->insertStudent($studentId, $name, $dob, $credit, $cgpa, $deptId);
+}
 
 ?>

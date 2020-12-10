@@ -30,6 +30,8 @@ function editStudent(){
     var err_cgpa = getElement("err_cgpa");
     var err_deptId = getElement("err_deptId");
 
+    var regExp = /[a-zA-Z]/g;
+
     var hasErr = false;
 
     if(e_studentId.value == ""){
@@ -44,6 +46,16 @@ function editStudent(){
         e_sname.focus();
         return !hasErr;
     }
+    else{
+        if(e_sname.search("0") != -1 || e_sname.search("1") != -1 || e_sname.search("2") != -1 || e_sname.search("3") != -1 ||
+            e_sname.search("4") != -1 || e_sname.search("5") != -1 || e_sname.search("6") != -1 || e_sname.search("7") != -1 ||
+            e_sname.search("8") != -1 || e_sname.search("9") != -1){
+            hasErr= true;
+            err_sname.innerHTML = "Name Cannot Contain any Number!!";
+            e_sname.focus();
+            return !hasErr;
+        }
+    }
     /*if(e_day.value == ""){
         hasErr= true;
         err_day.innerHTML = "DOB Required";
@@ -56,11 +68,27 @@ function editStudent(){
         e_credit.focus();
         return !hasErr;
     }
+    else{
+        if(regExp.test(e_credit.value)){
+            hasErr= true;
+            err_credit.innerHTML = "Credit cannot contain any letter";
+            e_credit.focus();
+            return !hasErr;
+        }
+    }
     if(e_cgpa.value == ""){
         hasErr= true;
         err_cgpa.innerHTML = "CGPA Required";
         e_cgpa.focus();
         return !hasErr;
+    }
+    else{
+        if(e_cgpa.value > 4 && e_cgpa.value < 0){
+            hasErr= true;
+            err_cgpa.innerHTML = "CGPA cannot be grater than 4 or less than Zero";
+            e_cgpa.focus();
+            return !hasErr;
+        }
     }
     if(e_deptId.value == ""){
         hasErr= true;

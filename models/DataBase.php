@@ -46,6 +46,14 @@ class DataBase
         mysqli_query($this->con, $sqlQuery);
     }
 
+    /*function insertStudent($id, $name, $credit, $cgpa, $dept_id)
+    {
+        $sqlQuery = "INSERT INTO student (id, name, credit, cgpa, dept_id)
+                    VALUES ('$id', '$name', '$credit', '$cgpa', '$dept_id')";
+
+        mysqli_query($this->con, $sqlQuery);
+    }*/
+
     function editStudent($id, $name, $dob, $credit, $cgpa, $dept_id)
     {
         $sqlQuery = "UPDATE products 
